@@ -1,0 +1,16 @@
+﻿@model CustomerOverview.Web.Mvc.Models.Orders.OrderViewModel
+
+<tr>
+    <td>@Model.TotalPrice</td>
+    <td>@Model.TotalUnits</td>
+    <td>
+        @if (Model.PossibleProblemWithExecution)
+        {
+            <span class="badge badge-danger">Yes</span>
+        }
+        else
+        {
+            <span class="badge badge-success">No</span>
+        }
+    </td>
+</tr>

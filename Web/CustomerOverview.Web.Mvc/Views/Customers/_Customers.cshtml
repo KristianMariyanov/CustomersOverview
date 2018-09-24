@@ -1,0 +1,17 @@
+﻿@using CustomerOverview.Web.Mvc.Models.Customers
+
+@model IEnumerable<CustomerOverview.Web.Mvc.Models.Customers.CustomerViewModel>
+
+<div id="customers-data-wrapper">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Customer Name</td>
+                <td>Orders Count</td>
+            </tr>
+        </thead>
+        <tbody class="customers-data-wrapper">
+            @Html.DisplayFor(m => m)
+        </tbody>
+    </table>
+</div>

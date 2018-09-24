@@ -1,0 +1,52 @@
+﻿@model CustomerOverview.Web.Mvc.Models.Customers.CustomersViewModel
+
+@{
+    ViewBag.Title = "All Customers";
+}
+
+<div class="row">
+    <div class="col-sm-8">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <div class="col-sm-4" style="margin-top: 20px">
+        <form asp-controller="Customers"
+              asp-action="GetCustomersByNameContaining"
+              data-ajax="true"
+              data-ajax-method="GET"
+              data-ajax-mode="replace-with"
+              data-ajax-update="#customers-data-wrapper">
+            Search By Name
+            <input type="text" name="value"/>
+            <input type="submit" value="Search"/>
+        </form>
+    </div>
+</div>
+
+<div id="customers-data-wrapper">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Customer Name</td>
+                <td>Orders Count</td>
+            </tr>
+        </thead>
+        <tbody>
+            @Html.DisplayFor(m => m.Customers)
+        </tbody>
+    </table>
+
+    Pages:
+    <div class="pagination-container">
+        <ul class="pagination">
+            @if (Model.HasPreviousPage)
+            {
+                <li>@Html.ActionLink("<", "Index", "Customers", new { page = Model.CurrentPage - 1 })</li>
+            }
+            <li class="active"><span>@Model.CurrentPage</span></li>
+            @if (Model.HasNextPage)
+            {
+                <li>@Html.ActionLink(">", "Index", "Customers", new { page = Model.CurrentPage + 1 })</li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model CustomerOverview.Web.Common.Models.CustomerBindingModel
+
+
+<section class="jumbotron">
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">CustomerId</label>
+            @Model.CustomerId
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">ContactName</label>
+            @Model.ContactName
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">ContactTitle</label>
+            @Model.ContactTitle
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">Address</label>
+            @Model.Address
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">Country</label>
+            @Model.Country
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">Region</label>
+            @Model.Region
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">City</label>
+            @Model.City
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">PostalCode</label>
+            @Model.PostalCode
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">PostalCode</label>
+            @Model.PostalCode
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">CompanyName</label>
+            @Model.CompanyName
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">Phone</label>
+            @Model.Phone
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label class="semi-colon bolder">Fax</label>
+            @Model.Fax
+        </div>
+    </div>
+    <section class="row">
+        <header>
+            <h3>Orders</h3>
+        </header>
+        <section id="orders-wrapper"></section>
+    </section>
+</section>
+
+@section Scripts {
+    <script>
+        $(function() {
+            const url = '@Url.Action("Orders", "Customers", new { id= Model.CustomerId })';
+            $.ajax({
+                type: "GET",
+                url: url,
+            }).done(function (r) {
+                $('#orders-wrapper').html(r);
+
+            }).fail(function (e) {
+                console.log(e.responseText);
+            });
+        })
+    </script>
+}

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CustomerOverview.Web.Mvc.Models.Orders.OrderViewModel>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Total Price</td>
+            <td>Total Units</td>
+            <td>Possible execution problem</td>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayFor(m => m)
+    </tbody>
+</table>

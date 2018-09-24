@@ -1,0 +1,8 @@
+﻿@model CustomerOverview.Web.Mvc.Models.Customers.CustomerViewModel
+
+<tr>
+    <td>
+        @Html.ActionLink(Model.CustomerName, "Details", "Customers", new { id = Model.Id })
+    </td>
+    <td>@Model.OrdersCount</td>
+</tr>
